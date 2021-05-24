@@ -12,7 +12,7 @@
 
 extern t_tc_queue tc_queue;
 extern u32 major_frame_cnt;
-extern u32 comm_frame_cnt;
+extern u32 frame_count;
 extern u32 accepted;
 extern u32 rejected;
 extern u32 executed;
@@ -91,8 +91,8 @@ void IT_TCMD_090_CHECK(void)
   unsigned char* pt_first_pos_3= (unsigned char*)(memory_adress_start_3);
 
   unsigned char expected_val_1[992], expected_val_2[992], expected_val_3[3] = {0xBE,0xBA,0xCA};
-  give_expected_val(expected_val_1, 0, 992);
-  give_expected_val(expected_val_2, 0x80, 992);
+  give_expected_value(expected_val_1, 0, 992);
+  give_expected_value(expected_val_2, 0x80, 992);
   
   int number_of_errors_1 = 0, number_of_errors_2 = 0, number_of_errors_3 = 0;
   for(int i=0; i<992; i++)
@@ -108,9 +108,7 @@ void IT_TCMD_090_CHECK(void)
     if ( *(pt_first_pos_3 + i) != expected_val_3[i] )
     number_of_errors_3 = 1;
   }
-
   correct_values_1(number_of_errors_1, number_of_errors_2, number_of_errors_3);
-
 }
 
 void IT_TCMD_110_CHECK(void) 
@@ -122,7 +120,7 @@ void IT_TCMD_110_CHECK(void)
 
   unsigned short expected_checksum[4] = {0xFFFF,0x9CF8,0x24DC,0xCC4B};
   unsigned char expected_val_1[13] = {0x00,0x00,0x00,0xAB,0xCD,0xEF,0x01,0x14,0x56,0xF8,0x9A,0x00,0x01};
-  give_expected_val(expected_val_2, 0x00, 64);
+  give_expected_value(expected_val_2, 0x00, 64);
 
   int number_of_load_errors_1 = 0, number_of_load_errors_2 = 0;
   int number_of_check_errors = 0;
@@ -138,7 +136,7 @@ void IT_TCMD_110_CHECK(void)
   }
   for(int i=0; i<4; i++)
   {
-    if ( (generated_checksums[i] != expected_checksum[i] ) )
+    if ( (generation_checksums[i] != expected_checksum[i] ) )
       number_of_check_errors++;
   }
   correct_values_2(number_of_load_errors_1, number_of_load_errors_2, number_of_check_errors);
