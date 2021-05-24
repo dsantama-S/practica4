@@ -52,7 +52,7 @@ void command_loop(void)
           execution_6_2_TC(tc_arrays[i], tc_queue.num_bytes[i]);
         
         else
-          discard_tc(tc_arrays[i], tc_queue.num_bytes[i], TRUE);
+          reject_tc(tc_arrays[i], tc_queue.num_bytes[i], TRUE);
       }
 
       else if ( correct_V_9_TC(tc_arrays[i], tc_queue.num_bytes[i]) == TRUE )
@@ -61,10 +61,10 @@ void command_loop(void)
           execution_6_9_TC(tc_arrays[i], tc_queue.num_bytes[i]);
 
         else
-          discard_tc(tc_arrays[i], tc_queue.num_bytes[i], TRUE);
+          reject_tc(tc_arrays[i], tc_queue.num_bytes[i], TRUE);
       }
       else  
-        discard_tc(tc_arrays[i], tc_queue.num_bytes[i], TRUE);
+        reject_tc(tc_arrays[i], tc_queue.num_bytes[i], TRUE);
     }
   }
 }
